@@ -1,0 +1,44 @@
+<form [formGroup]="searchForm" (ngSubmit)="handleSearch()">
+  <label for="title">Title</label>
+  <input
+    type="text"
+    name="title"
+    placeholder="Title"
+    id="title"
+    formControlName="title"
+  />
+  <div *ngIf="submitted && f['title'].errors">
+    <div *ngIf="f['title'].errors['required']">Title is required</div>
+    <div *ngIf="f['title'].errors['minlength']">
+      Title be at least 2 characters
+    </div>
+    <div *ngIf="f['title'].errors['maxlength']">
+      Title must not exceed 20 characters
+    </div>
+  </div>
+  <label for="location">Location</label>
+  <input
+    type="text"
+    name="location"
+    placeholder="Location"
+    id="location"
+    formControlName="location"
+  />
+  <div *ngIf="submitted && f['location'].errors">
+    <div *ngIf="f['location'].errors['required']">Location is required</div>
+    <div *ngIf="f['location'].errors['minlength']">
+      Location be at least 3 characters
+    </div>
+    <div *ngIf="f['location'].errors['maxlength']">
+      Location must not exceed 20 characters
+    </div>
+  </div>
+  <input type="submit" value="Search" />
+</form>
+
+<div *ngIf="filterJobs.length > 0">
+  <ul *ngFor="let job of filterJobs">
+    <li>{{ job.title }}</li>
+    <li>{{ job.location }}</li>
+  </ul>
+</div>
