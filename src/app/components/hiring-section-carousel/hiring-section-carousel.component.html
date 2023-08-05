@@ -1,0 +1,31 @@
+<div class="card-carousel">
+  <div
+    class="card-carousel__inner"
+    #scrollContainer
+    (scroll)="onScroll($event)"
+  >
+    <div
+      class="card-grid"
+      *ngFor="let courseFeatures of groupedFeatures"
+      #scrollGrid
+    >
+      <div class="card" *ngFor="let path of courseFeatures">
+        <div class="card-img">
+          <img [src]="path" loading="lazy" width="100" height="180" />
+        </div>
+      </div>
+    </div>
+    <button
+      *ngIf="!(currentGrid === 0 && currentGrid >= totalGrids - 1)"
+      class="outside-controller prev"
+      (click)="scrollLeft()"
+      [disabled]="currentGrid === 0"
+    ></button>
+    <button
+      *ngIf="!(currentGrid === 0 && currentGrid >= totalGrids - 1)"
+      class="outside-controller next"
+      (click)="scrollRight()"
+      [disabled]="currentGrid >= totalGrids - 1"
+    ></button>
+  </div>
+</div>
