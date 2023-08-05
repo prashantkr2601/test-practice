@@ -11,7 +11,11 @@
     >
       <div class="card" *ngFor="let path of courseFeatures">
         <div class="card-img">
-          <img [src]="path" loading="lazy" width="100" height="180" />
+          <img
+            [src]="path"
+            loading="lazy"
+            style="width: 200px; height: 100px"
+          />
         </div>
       </div>
     </div>

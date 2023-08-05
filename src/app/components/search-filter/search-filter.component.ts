@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 
 import db from '../../data/db.json';
+import { DeviceTypeService } from 'src/app/device-type.service';
 
 @Component({
   selector: 'app-search-filter',
@@ -14,7 +15,7 @@ import db from '../../data/db.json';
   styleUrls: ['./search-filter.component.css'],
 })
 export class SearchFilterComponent implements OnInit {
-  constructor() {}
+  constructor(private deviceType: DeviceTypeService) {}
 
   searchForm = new FormGroup({
     title: new FormControl('', [
@@ -30,7 +31,9 @@ export class SearchFilterComponent implements OnInit {
   });
   submitted = false;
   filterJobs: any = [];
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.deviceType.isDesktop);
+  }
 
   get f(): { [key: string]: AbstractControl } {
     return this.searchForm.controls;
